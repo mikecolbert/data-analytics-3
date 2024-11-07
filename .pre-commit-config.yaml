@@ -1,0 +1,22 @@
+exclude: '\.ipynb_checkpoints/' # don't check files in this directory
+
+repos:
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.5.2 # Latest stable version of nbQA
+    hooks:
+      - id: nbqa-black
+        name: black (nbqa)
+        args: ["--line-length=88"] # Black’s default line length
+        additional_dependencies: ["black==23.9.1", "setuptools"] # Ensure Black and setuptools are available
+
+      - id: nbqa-isort
+        name: isort (nbqa)
+        args: ["--profile=black"]
+        additional_dependencies: ["isort", "setuptools"]
+
+      # - id: nbqa-flake8
+      #   name: flake8 (nbqa)
+      #   args:
+      #     - --max-line-length=88
+      #     - --ignore=E203,W503
+      #   additional_dependencies: ["flake8", "setuptools"]
